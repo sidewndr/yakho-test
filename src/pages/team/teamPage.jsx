@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {useRouteMatch} from "react-router-dom";
+import {Header} from "../../components/header";
 
 
 const TeamPageStl = styled.div`
@@ -12,12 +12,9 @@ const TeamPageStl = styled.div`
 
 export const TeamPage = () => {
 
-  const test = useRouteMatch()
-  console.log(test)
-
   return (
     <TeamPageStl>
-      Team
+      <Header />
     </TeamPageStl>
   )
 }

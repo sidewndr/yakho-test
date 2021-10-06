@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import {ModeSwitcher, ModeSwitcherStl} from "./modeSwitcher";
 import {Title, TitleVariants} from "./title";
 import {Hr, HrStl} from "./hr";
 import {Button} from "./button";
 import {Search} from "./search";
-import {useRouteMatch} from "react-router-dom";
+import {AddTeamModalWindow} from "./addTeamModalWindow";
 
 const ContainerStl = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const ContainerStl = styled.div`
   }
 `
 
-const HeaderStl = styled.div`
+export const HeaderStl = styled.div`
   ${ContainerStl}:nth-child(1) {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -30,8 +30,7 @@ const HeaderStl = styled.div`
 
 
 export const Header = () => {
-
-  const match = useRouteMatch()
+  const [addTeamModalActive, setAddTeamModalActive] = useState(false)
 
   return (
     <HeaderStl>
@@ -43,9 +42,11 @@ export const Header = () => {
       <Hr />
 
       <ContainerStl>
-        <Button />
+        <Button onClick={() => setAddTeamModalActive(!addTeamModalActive)}>+</Button>
         <Search />
       </ContainerStl>
+
+      {addTeamModalActive && <AddTeamModalWindow onClick={() => setAddTeamModalActive(!addTeamModalActive)} />}
     </HeaderStl>
   )
 }
